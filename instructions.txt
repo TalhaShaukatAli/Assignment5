@@ -1,0 +1,23 @@
+1. Confirm that the prebuilt form is working as intended.  Use echo or print or print_r to output the values of the form.  Make sure that you handle the non required fields appropraitely so that they do not throw and error if they are not set.
+
+2.  Fill out the applicant summary view.  There is already a file for this but it is blank.  The view should expect an associative array called $applicant and should display their first name, last name, their years of experience, their level (jr, mid, senior, etc...), and their skills.  Hint: It will be helpful to use the below script to display a single user to the screen so that you can get a feel for all what is included / available on the user object.  Paste it below all of the includes from index.php. 
+
+echo '<pre>';
+print_r($users[0]);
+echo '</pre>';
+
+3. Look over the applicant service file.  It has a method already called get_users_from_database.  Use this method in the index.php file to populate your applicant summary view and confirm the applicant summary view is displaying each applicant properly.
+
+3.1. You can take some time to make this look pretty with CSS if you have time/desire to.
+
+4. in applicant service create a method that will receive string $level as a parameter and return an array of applicants whose level is the same as the $level parameter.  (Filter out any applicants whose level does not match the passed in parameter).  Then update your index.php so that the $applicants variable only contains applicants who have the correct level.  Hint: make use of existing methods to help you with this.
+
+5. in applicant service create a method that takes in int $experience and returns an array of applicants who have at minimum the number of yearh experience passed in.  then update your index.php so that the $applicants variable only contains applicants who have at least the amount of experience requested.  Hint: make use of existing methods to help you with this.
+
+6. in applicant service create a method that takes array $skills as a parameter, and returns a list of applicants who have at least one of those skills.  Then update your index.php so that the $applicants variable holds only applicants who have at least 1 of the requested skills. Hint: make use of existing methods to help you with this.
+
+7. In applicant service create a method that takes in string $level, int $experience, and array $skills and returns a list of applicants who match those requirements.  Then update your index.php so that the $applicants variable holds only the applicants who meet the requirements listed in the form.  Hint: make use of existing methods to help you with this.
+
+8. Currently the list of applicants is unsorted.  In applicant service make a method that will take in array $applicants and return a sorted list of applicants.  For this, applicants who have 3/3 matching skills should be sorted higher than applicants who have only 1/3 mathing skills.  Applicants who have 6 years of experience should be sorted higher than applicants of 2 years experience.  Then update yoru method from exercise 7 to make use of this new method.
+
+9. In the form view add an optional field for number of applicants.  This field will be the number of applicants shown in the results.  If the value is 0 or is not set, the default should be to return ALL of the applicants that match the criteria.
